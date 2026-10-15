@@ -1,5 +1,6 @@
 #include <iostream>
 #pragma once
+
 template <typename T>
 class DoublyLinkedList {
 public:

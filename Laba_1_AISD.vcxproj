@@ -124,7 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DoublyLinkedList.h" />
-    <ClCompile Include="DynamicArray.cpp" />
+    <ClCompile Include="DynamicList.h" />
     <ClCompile Include="Laba_1_AISD.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

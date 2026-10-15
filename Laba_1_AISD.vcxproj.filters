@@ -21,7 +21,7 @@
     <ClCompile Include="DoublyLinkedList.h">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicArray.cpp">
+    <ClCompile Include="DynamicList.h">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
