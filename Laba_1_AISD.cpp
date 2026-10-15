@@ -1,20 +1,55 @@
-﻿// Laba_1_AISD.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include "DoublyLinkedList.h"
 
-#include <iostream>
+void printList(DoublyLinkedList<int>& list) {
+    std::cout << "Текущий список: ";
+    int i = 0;
+    while (true) {
+        auto node = list.getByIndex(i);
+        if (node == nullptr) break;
+        std::cout << *(node->data) << " <-> ";
+        i++;
+    }
+    std::cout << "nullptr\n";
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "=== Тестирование двусвязного списка ===\n\n";
+
+    int val1 = 10;
+    int val2 = 20;
+    int val3 = 30;
+    int val4 = 40;
+
+    DoublyLinkedList<int> list;
+    list.add(0, &val1);
+    printList(list);
+
+    list.add(0, &val2);
+    printList(list);
+
+    list.add(5, &val3);
+    printList(list);
+
+    list.add(1, &val4);
+    printList(list);
+
+    std::cout << "\n--- Проверка поиска ---\n";
+    auto searchNodeByIndex = list.getByIndex(1);
+    if (searchNodeByIndex != nullptr) {
+        std::cout << "Элемент по индексу 1: " << *(searchNodeByIndex->data) << " (Ожидалось: 40)\n";
+    }
+
+    auto searchNodeByVal = list.getByVal(&val3);
+    if (searchNodeByVal != nullptr) {
+        std::cout << "Найден адрес значения 30. Значение узла: " << *(searchNodeByVal->data) << "\n";
+    }
+
+    std::cout << "\n--- Проверка удаления ---\n";
+    list.remove(1);
+    printList(list);
+
+    list.remove(0);
+    printList(list);
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
