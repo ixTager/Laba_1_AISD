@@ -2,6 +2,7 @@
 #include <string>
 #include "DoublyLinkedList.h"
 #include "DynamicList.h"
+#include "Stack.h"
 
 void printList(DoublyLinkedList<int>& list) {
     std::cout << "Текущий список: ";
@@ -63,7 +64,7 @@ int main() {
         std::cout << "Найден адрес значения 30. Значение узла: " << *(searchNodeByVal->data) << "\n";
     }
 
-    std::cout << "\n--- Проверка удаления ---\n";
+    std::cout << "\nУдаление\n";
     list.remove(1);
     printList(list);
 
@@ -71,7 +72,7 @@ int main() {
     printList(list);
 
 
-    
+
     std::cout << "\n\nДинамический массив (тип: int)\n\n";
 
     DynamicList<int> intList(2);
@@ -93,24 +94,57 @@ int main() {
     int indexMissing = intList.getIndexByVal(999);
     std::cout << "Индекс несуществующего числа 999: " << indexMissing << " (Ожидалось: -1)\n";
 
-    std::cout << "\n--- Проверка защиты от неверного指数 ---\n";
+    std::cout << "\nНеверный ввод\n";
     int badData = intList.get(10);
     std::cout << "Полученное дефолтное значение: " << badData << " (Ожидалось: 0)\n";
 
-    std::cout << "\n--- Проверка удаления ---\n";
+    std::cout << "\nПроверка удаления\n";
     intList.remove(2);
     std::cout << "После удаления элемента с индекса 2:\n";
     printIntList(intList);
 
 
-    std::cout << "\n\n Динамического массива (тип: string)\n\n";
+    std::cout << "\n\n Динамический массив (тип: string)\n\n";
 
     DynamicList<std::string> stringList;
     stringList.add(0, "Hello");
     stringList.add(1, "Kitty");
-    stringList.add(1, "Nyamy"); 
+    stringList.add(1, "Nyamy");
 
     printStringList(stringList);
+
+
+    std::cout << "\n\nСтек на основе двусвязного списка\n\n";
+
+    Stack<int> myStack;
+    int s1 = 100;
+    int s2 = 200;
+    int s3 = 300;
+
+    std::cout << "Стек пуст? " << (myStack.isEmpty() ? "Да" : "Нет") << " (Ожидалось: Да)\n";
+
+    myStack.push(&s1);
+    myStack.push(&s2);
+    myStack.push(&s3);
+
+    std::cout << "Размер стека после 3-х push: " << myStack.size() << " (Ожидалось: 3)\n";
+
+    if (myStack.getFirstElement() != nullptr) {
+        std::cout << "Вершина стека (getFirstElement): " << *(myStack.getFirstElement()) << " (Ожидалось: 300)\n";
+    }
+
+    std::cout << "\nУдаляем элемент с вершины (pop)...\n";
+    myStack.pop();
+
+    std::cout << "Новая вершина стека: " << *(myStack.getFirstElement()) << " (Ожидалось: 200)\n";
+    std::cout << "Текущий размер стека: " << myStack.size() << " (Ожидалось: 2)\n";
+
+    myStack.pop();
+    myStack.pop();
+
+    std::cout << "\nПосле извлечения всех элементов:\n";
+    std::cout << "Стек пуст? " << (myStack.isEmpty() ? "Да" : "Нет") << " (Ожидалось: Да)\n";
+    std::cout << "Размер стека: " << myStack.size() << " (Ожидалось: 0)\n";
 
     return 0;
 }
