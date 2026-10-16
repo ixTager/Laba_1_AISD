@@ -125,10 +125,11 @@
   <ItemGroup>
     <ClCompile Include="DoublyLinkedList.h" />
     <ClCompile Include="DynamicList.h" />
-    <ClCompile Include="Laba_1_AISD.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="SYA.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
